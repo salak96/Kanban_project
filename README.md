@@ -89,4 +89,16 @@ vite-env.d.ts
 npm run dev
 ```
 
+# Tambahkan code dibawah ini di package.json
 
+```
+"format":"npx prettier --write src",
+ "linter":"npx eslint src",
+```
+
+- Untuk Menjalankan code diatas diterminal
+
+```
+npm run format
+npm run linter
+````
