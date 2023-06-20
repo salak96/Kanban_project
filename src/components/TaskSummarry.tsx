@@ -28,12 +28,12 @@ const TaskSummary = (): JSX.Element => {
       </div>
       <div style={styles.links}>
         <div style={styles.link2}>
-        <Link to="/task-list" style={styles.link}>
-          See Your Task List
-        </Link>
-        <Link to="/task-progress" style={styles.link}>
-          Manage Your Task Progress
-        </Link>
+          <Link to="/task-list" style={styles.link}>
+            See Your Task List
+          </Link>
+          <Link to="/task-progress" style={styles.link}>
+            Manage Your Task Progress
+          </Link>
         </div>
       </div>
     </div>
@@ -79,6 +79,6 @@ const styles: CSSProperties = {
     width: '100%',
     fontSize: '14px',
     padding: '16px',
-  }
+  },
 }
 export default TaskSummary

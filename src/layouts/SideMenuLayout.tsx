@@ -4,8 +4,8 @@ import SideMenu from '../components/SideMenu'
 const SideMenuLayout = () => {
   return (
     <div style={{ display: 'flex' }}>
-            <SideMenu />
-            <Outlet />
+      <SideMenu />
+      <Outlet />
     </div>
   )
 }

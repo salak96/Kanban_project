@@ -19,3 +19,31 @@ export const completedTasksSelector = selector<Task[]>({
     })
   },
 })
+
+export const  notStartedTasksSelector = selector <Task[]>({
+  key: 'not_started_tasks',
+  get: ({ get }) => {
+    return get(tasksState).filter((task) => {
+      return task.progressOrder === 1
+    })
+  },
+})
+
+export const   inProgressTasksSelector = selector <Task[]>({
+  key: 'in_progress_tasks',
+  get: ({ get }) => {
+    return get(tasksState).filter((task) => {
+      return task.progressOrder === 2
+    })
+  },
+})
+export const   waitingTasksSelector = selector <Task[]>({
+  key: 'waiting_tasks',
+  get: ({ get }) => {
+    return get(tasksState).filter((task) => {
+      return task.progressOrder === 0
+    })
+  },
+  
+})
+
