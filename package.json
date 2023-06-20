@@ -5,15 +5,17 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "format":"npx prettier --write src",
-    "linter":"npx eslint src",
+    "format": "npx prettier --write src",
+    "linter": "npx eslint src",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.13.0",
+    "recoil": "^0.7.7"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

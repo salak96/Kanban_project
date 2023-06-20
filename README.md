@@ -102,3 +102,43 @@ npm run dev
 npm run format
 npm run linter
 ````
+
+# Setelah siap melanjutkan proses development, mari kita pasang react-router dengan command berikut ini :
+```
+npm install react-router-dom
+```
+
+# Setelah terpasang, perbarui App.tsx dan atur BrowserRouter seperti ini:
+
+```
+import React from 'react'
+import {createBrowserRouter, RouterProvider} from 'react-router-dom'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <h1>Home</h1>,
+  },
+  {
+    path: 'task-list',
+    element: <h1>Task List</h1>,
+  },
+  {
+    path: 'task-progress',
+    element: <h1>Task Progress</h1>,
+  },
+])
+
+function App(): JSX.Element {
+  return <RouterProvider router={router} />
+}
+
+export default App
+```
+
+# buatlah /src/types/index.ts dan definisikan type disitu. Karena constant styles memiliki format { key(string): value(CSS) }, maka bisa didefinisikan seperti berikut ini.
+```
+export interface CSSProperties {
+  [key: string]: React.CSSProperties
+}
+```
