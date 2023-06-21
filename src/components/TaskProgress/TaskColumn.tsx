@@ -1,5 +1,5 @@
 import React from 'react';
-import TaskCard from './TaskCard';
+import { TaskCard } from './TaskCard';
 import type { Task, CSSProperties } from '../../types';
 
 interface TaskColumnProps {
@@ -25,7 +25,12 @@ const TaskColumn = ({ columnTitle, tasks }: TaskColumnProps): JSX.Element => {
     );
 };
 
-const styles: CSSProperties = {
+const mediaQueries = {
+    tablet: '@media (max-width: 768px)',
+    mobile: '@media (max-width: 480px)',
+};
+
+const styles:  CSSProperties  = {
     plusIcon: {
         cursor: 'pointer',
     },
@@ -37,6 +42,17 @@ const styles: CSSProperties = {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '0 4px',
+    },
+};
+
+// Responsive styles
+styles.categoryColumn = {
+    ...styles.categoryColumn,
+    [mediaQueries.tablet]: {
+        width: '40%',
+    },
+    [mediaQueries.mobile]: {
+        width: '100%',
     },
 };
 

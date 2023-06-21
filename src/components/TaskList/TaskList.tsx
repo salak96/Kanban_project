@@ -3,7 +3,7 @@ import { useRecoilValue } from 'recoil';
 import { tasksState } from '../../feactures/TaskAtoms';
 import type { Task, CSSProperties } from '../../types';
 import TaskListItem from './TaskListItem';
-
+// import css
 const TaskList = (): JSX.Element => {
     const task: Task[] = useRecoilValue(tasksState);
 
@@ -35,7 +35,7 @@ const TaskList = (): JSX.Element => {
 const styles: CSSProperties = {
     container: {
         display: 'flex',
-        alignContent: 'center',
+        alignItems: 'center',
         flexDirection: 'column',
         padding: '40px',
     },
@@ -43,18 +43,22 @@ const styles: CSSProperties = {
         color: '#55C89F',
         marginBottom: '60px',
     },
-    list: {
-        color: '#fff',
-        backgroundColor: '#55C89F',
+    taskButtons: {
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: '40px',
-        width: '100%',
+        marginBottom: '20px',
     },
-    link: {
-        padding: '16px',
-        marginRight: '24px',
+    button: {
+        padding: '8px 16px',
+        margin: '0 8px',
+        backgroundColor: 'red',
+        color: '#fff',
+        borderRadius: '4px',
+        border: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        cursor: 'pointer',
     },
     tableHead: {
         display: 'flex',
@@ -63,6 +67,19 @@ const styles: CSSProperties = {
         color: '#fff',
         backgroundColor: '#55C89F',
         margin: '10px 0',
+        borderRadius: '12px',
+    },
+    tableHeaderTaskName: {
+        flex: '2',
+    },
+    tableHeaderDetail: {
+        flex: '2',
+    },
+    tableHeaderDueDate: {
+        flex: '2',
+    },
+    tableHeaderProgress: {
+        flex: '1',
     },
 };
 

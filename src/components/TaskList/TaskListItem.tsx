@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Task, CSSProperties } from '../../types';
 import { TASK_PROGRESS_STATUS, TASK_PROGRESS_ID } from '../../constants/app';
-import {useTasksAction} from '../../feactures/hooks/Task';
+import { useTasksAction } from '../../feactures/hooks/Task';
 
 interface TaskListItemProps {
     task: Task;
@@ -34,8 +34,7 @@ const getIconStyle = (progressOrder: number): React.CSSProperties => {
     };
 };
 const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
- 
-    const {completedTask} = useTasksAction();
+    const { completedTask } = useTasksAction();
 
     return (
         <div style={styles.tableBody}>

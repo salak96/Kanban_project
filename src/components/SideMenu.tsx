@@ -28,8 +28,7 @@ const commonLinkStyles: React.CSSProperties = {
     margin: '12px 0',
     textDecoration: 'none',
 };
-
-const styles: CSSProperties = {
+const styles: CSSProperties  = {
     container: {
         display: 'flex',
         flexDirection: 'column',
@@ -53,6 +52,33 @@ const styles: CSSProperties = {
     text: {
         fontSize: '24px',
         marginLeft: '8px',
+    },
+};
+
+// Media queries for responsiveness
+const mediaQueries = {
+    tablet: '@media (max-width: 768px)',
+    mobile: '@media (max-width: 480px)',
+};
+
+// Responsive styles
+styles.container = {
+    ...styles.container,
+    [mediaQueries.tablet]: {
+        width: '70%',
+    },
+    [mediaQueries.mobile]: {
+        width: '90%',
+    },
+};
+
+styles.text = {
+    ...styles.text,
+    [mediaQueries.tablet]: {
+        fontSize: '20px',
+    },
+    [mediaQueries.mobile]: {
+        fontSize: '16px',
     },
 };
 
