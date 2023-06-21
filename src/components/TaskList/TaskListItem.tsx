@@ -1,8 +1,8 @@
 import React from 'react';
 import type { Task, CSSProperties } from '../../types';
 import { TASK_PROGRESS_STATUS, TASK_PROGRESS_ID } from '../../constants/app';
-import { useRecoilState } from 'recoil';
-import { tasksState } from '../../feactures/TaskAtoms';
+import {useTasksAction} from '../../feactures/hooks/Task';
+
 interface TaskListItemProps {
     task: Task;
 }
@@ -34,14 +34,9 @@ const getIconStyle = (progressOrder: number): React.CSSProperties => {
     };
 };
 const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
-    // Ditambahkan
-    const [tasks, setTasks] = useRecoilState<Task[]>(tasksState);
+ 
+    const {completedTask} = useTasksAction();
 
-    // Definisikan function ini
-    const completeTask = (taskId: number): void => {
-        const updatedTasks: Task[] = tasks.map((task) => (task.id === taskId ? { ...task, progressOrder: TASK_PROGRESS_ID.COMPLETED } : task));
-        setTasks(updatedTasks);
-    };
     return (
         <div style={styles.tableBody}>
             <div style={styles.tableBodyTaskTitle}>
@@ -49,7 +44,7 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
                     className='material-icons'
                     style={getIconStyle(task.progressOrder)}
                     onClick={(): void => {
-                        completeTask(task.id); // Ditambahkan
+                        completedTask(task.id); // Ditambahkan
                     }}
                 >
                     check_circle
