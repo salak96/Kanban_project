@@ -1,6 +1,8 @@
 import React from 'react';
 import type { Task, CSSProperties } from '../../types';
 import { TASK_PROGRESS_ID } from '../../constants/app';
+import { useRecoilState } from 'recoil';
+import { tasksState } from '../../feactures/TaskAtoms';
 
 interface TaskCardProps {
     task: Task;
@@ -27,12 +29,23 @@ const getArrowPositionStyle = (progressOrder: number): React.CSSProperties => {
 };
 
 const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
+    // Ditambahkan
+    const [tasks, setTasks] = useRecoilState<Task[]>(tasksState);
+
+    // Definisikan function ini
+    const completeTask = (taskId: number): void => {
+        const updatedTasks: Task[] = tasks.map((task) => (task.id === taskId ? { ...task, progressOrder: TASK_PROGRESS_ID.COMPLETED } : task));
+        setTasks(updatedTasks);
+    };
     return (
         <div style={styles.taskCard}>
             <div style={styles.taskIcons}>
                 <div
                     className='material-icons'
                     style={getIconStyle(task.progressOrder)} // Diperbarui
+                    onClick={(): void => {
+                        completeTask(task.id);// Ditambahkan
+                    }}
                 >
                     check_circle
                 </div>
