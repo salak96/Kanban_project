@@ -1,9 +1,9 @@
 import React from 'react';
 import type { Task, CSSProperties } from '../../types';
 import { TASK_PROGRESS_ID } from '../../constants/app';
-import { useRecoilState } from 'recoil';
-import { tasksState } from '../../feactures/TaskAtoms';
 import { useMoveTask } from '../../feactures/hooks/MoveTask';
+import { completeTask } from '../../feactures/tasks/TaskSelector';
+import { useRecoilValue } from 'recoil';
 
 
 interface TaskCardProps {
@@ -11,18 +11,11 @@ interface TaskCardProps {
 }
 
 export const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
-    const [tasks, setTasks] = useRecoilState<Task[]>(tasksState);
-    const { moveTaskCard } = useMoveTask();
-
-    const completeTask = (taskId: number): void => {
-        const updatedTasks: Task[] = tasks.map((task) => (task.id === taskId ? { ...task, progressOrder: TASK_PROGRESS_ID.COMPLETED } : task));
-        setTasks(updatedTasks);
-    };
-
+    const { moveTaskCard } = useMoveTask()
     const handleMoveCard = (directionNumber: 1 | -1): void => {
         moveTaskCard(task.id, directionNumber);
     };
-    console.log(handleMoveCard);
+    const completedTasks: Task[] = useRecoilValue(completeTask);
 
     const getIconStyle = (progressOrder: number): React.CSSProperties => {
         const color: '#55C89F' | '#C5C5C5' = progressOrder === TASK_PROGRESS_ID.COMPLETED ? '#55C89F' : '#C5C5C5';
@@ -34,6 +27,11 @@ export const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
             cursor,
             fontSize: '28px',
         };
+    };
+    const handleCompleteTask = (): void => {
+        if (!completedTasks.includes(task)) {
+            handleMoveCard(1);
+        }
     };
 
     const getArrowPositionStyle = (progressOrder: number): React.CSSProperties => {
@@ -50,13 +48,8 @@ export const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
                 <div
                     className='material-icons'
                     style={getIconStyle(task.progressOrder)
-                    // responsive
-                    
                     }
-
-                    onClick={(): void => {
-                        completeTask(task.id);
-                    }}
+                    onClick={handleCompleteTask}
                 >
                     check_circle
                 </div>
@@ -84,10 +77,7 @@ export const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
     );
 };
 
-const mediaQueries = {
-    tablet: '@media (max-width: 768px)',
-    mobile: '@media (max-width: 480px)',
-};
+
 
 const styles:CSSProperties  = {
     taskCard: {
@@ -103,5 +93,18 @@ const styles:CSSProperties  = {
         color: '#55C89F',
         cursor: 'pointer',
         fontSize: '28px',
+        display: 'flex',
+    },
+    taskIcons: {
+        display: 'flex',
+        alignItems: 'center',
+    },
+    taskTitle: {
+        fontWeight: 'bold',
+        fontSize: '20px',
+    },
+    icon: {
+        marginRight: '8px',
+
     }
-};
+ }

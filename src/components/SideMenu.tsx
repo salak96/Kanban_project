@@ -36,7 +36,7 @@ const styles: CSSProperties  = {
         padding: '20px',
         minHeight: '100vh',
         height: '100%',
-        width: '50%',
+        width: '5%',
     },
     link: {
         ...commonLinkStyles,
@@ -56,30 +56,17 @@ const styles: CSSProperties  = {
 };
 
 // Media queries for responsiveness
-const mediaQueries = {
-    tablet: '@media (max-width: 768px)',
-    mobile: '@media (max-width: 480px)',
-};
 
 // Responsive styles
 styles.container = {
     ...styles.container,
-    [mediaQueries.tablet]: {
-        width: '70%',
-    },
-    [mediaQueries.mobile]: {
-        width: '90%',
-    },
+        width: '10%',
+    
 };
 
 styles.text = {
     ...styles.text,
-    [mediaQueries.tablet]: {
-        fontSize: '20px',
-    },
-    [mediaQueries.mobile]: {
-        fontSize: '16px',
-    },
+    fontSize: '20px',
 };
 
 export default SideMenu;

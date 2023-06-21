@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import type { Task } from '../types';
+import type { Task,UserId } from '../types';
 import { AtomKeys } from '../constants/recoilKeys';
 
 export const tasksState = atom<Task[]>({
@@ -49,3 +49,13 @@ export const tasksState = atom<Task[]>({
         },
     ],
 });
+
+export const selectId = atom<UserId>({
+    key: "selectId",
+    default: 
+        {
+            id: null,
+            directionNumber:null
+        }
+    },
+);

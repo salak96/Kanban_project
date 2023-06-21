@@ -25,10 +25,7 @@ const TaskColumn = ({ columnTitle, tasks }: TaskColumnProps): JSX.Element => {
     );
 };
 
-const mediaQueries = {
-    tablet: '@media (max-width: 768px)',
-    mobile: '@media (max-width: 480px)',
-};
+
 
 const styles:  CSSProperties  = {
     plusIcon: {
@@ -48,12 +45,7 @@ const styles:  CSSProperties  = {
 // Responsive styles
 styles.categoryColumn = {
     ...styles.categoryColumn,
-    [mediaQueries.tablet]: {
-        width: '40%',
-    },
-    [mediaQueries.mobile]: {
-        width: '100%',
-    },
+    width: '20%',
 };
 
 export default TaskColumn;
