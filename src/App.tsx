@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import SideMenu from './components/SideMenu';
 import { RecoilRoot } from 'recoil'; // Ditambahkan
 import TaskSummary from './components/TaskSummarry';
-import SideMenuLayout from './layouts/SideMenuLayout';
+import SideMenuLayout from './components/layouts/SideMenuLayout';
 import TaskList from './components/TaskList/TaskList';
 import TaskProgress from './components/TaskProgress/TaskProgress';
 ///buat variabel router

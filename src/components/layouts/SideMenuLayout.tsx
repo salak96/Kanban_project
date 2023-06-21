@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import SideMenu from '../components/SideMenu';
+import SideMenu from '../SideMenu';
 
 const SideMenuLayout = () => {
     return (
