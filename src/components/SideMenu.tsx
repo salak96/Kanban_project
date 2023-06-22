@@ -28,7 +28,7 @@ const commonLinkStyles: React.CSSProperties = {
     margin: '12px 0',
     textDecoration: 'none',
 };
-const styles: CSSProperties  = {
+const styles: CSSProperties = {
     container: {
         display: 'flex',
         flexDirection: 'column',
@@ -60,8 +60,7 @@ const styles: CSSProperties  = {
 // Responsive styles
 styles.container = {
     ...styles.container,
-        width: '10%',
-    
+    width: '10%',
 };
 
 styles.text = {

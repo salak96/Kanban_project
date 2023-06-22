@@ -25,9 +25,7 @@ const TaskColumn = ({ columnTitle, tasks }: TaskColumnProps): JSX.Element => {
     );
 };
 
-
-
-const styles:  CSSProperties  = {
+const styles: CSSProperties = {
     plusIcon: {
         cursor: 'pointer',
     },

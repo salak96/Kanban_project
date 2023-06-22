@@ -2,20 +2,19 @@ import React from 'react';
 import type { Task, CSSProperties } from '../../types';
 import { TASK_PROGRESS_ID } from '../../constants/app';
 import { useMoveTask } from '../../feactures/hooks/MoveTask';
-import { completeTask } from '../../feactures/tasks/TaskSelector';
+import { incompleteTask } from '../../feactures/tasks/TaskSelector';
 import { useRecoilValue } from 'recoil';
-
 
 interface TaskCardProps {
     task: Task;
 }
 
 export const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
-    const { moveTaskCard } = useMoveTask()
+    const { moveTaskCard } = useMoveTask();
     const handleMoveCard = (directionNumber: 1 | -1): void => {
         moveTaskCard(task.id, directionNumber);
     };
-    const completedTasks: Task[] = useRecoilValue(completeTask);
+    const completedTasks: Task[] = useRecoilValue(incompleteTask);
 
     const getIconStyle = (progressOrder: number): React.CSSProperties => {
         const color: '#55C89F' | '#C5C5C5' = progressOrder === TASK_PROGRESS_ID.COMPLETED ? '#55C89F' : '#C5C5C5';
@@ -27,11 +26,6 @@ export const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
             cursor,
             fontSize: '28px',
         };
-    };
-    const handleCompleteTask = (): void => {
-        if (!completedTasks.includes(task)) {
-            handleMoveCard(1);
-        }
     };
 
     const getArrowPositionStyle = (progressOrder: number): React.CSSProperties => {
@@ -47,9 +41,8 @@ export const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
             <div style={styles.taskIcons}>
                 <div
                     className='material-icons'
-                    style={getIconStyle(task.progressOrder)
-                    }
-                    onClick={handleCompleteTask}
+                    style={getIconStyle(task.progressOrder)}
+                    onClick={() => (completedTasks.includes(task) ? null : handleMoveCard(1))}
                 >
                     check_circle
                 </div>
@@ -77,9 +70,7 @@ export const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
     );
 };
 
-
-
-const styles:CSSProperties  = {
+const styles: CSSProperties = {
     taskCard: {
         backgroundColor: '#C7EFD0',
         borderRadius: '12px',
@@ -105,6 +96,5 @@ const styles:CSSProperties  = {
     },
     icon: {
         marginRight: '8px',
-
-    }
- }
+    },
+};

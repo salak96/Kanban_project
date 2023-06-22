@@ -3,20 +3,35 @@ import { useRecoilValue } from 'recoil';
 import { tasksState } from '../../feactures/TaskAtoms';
 import type { Task, CSSProperties } from '../../types';
 import TaskListItem from './TaskListItem';
+import { useState } from 'react';
+import TaskModal from '../shared/TaskModal'; // Ditambahkan
+import { TASK_PROGRESS_ID } from '../../constants/app'; // Ditambahkan
 // import css
 const TaskList = (): JSX.Element => {
     const task: Task[] = useRecoilValue(tasksState);
-
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     return (
         <div style={styles.container}>
             <h1 style={styles.heading}>Your Tasks</h1>
             <div style={styles.taskButtons}>
-                <button style={styles.button}>
+                <button
+                    style={styles.button}
+                    onClick={() => {
+                        setIsModalOpen(true);
+                    }}
+                >
                     <span className='material-icons'>add</span>Add task
                 </button>
                 <button style={styles.button}>
                     <span className='material-icons'>sort</span>Filter tasks
                 </button>
+                        {isModalOpen && (
+                <TaskModal
+                headingTitle="Add your tasks" 
+                setIsModalOpen={setIsModalOpen}
+                defaultProgressOrder={TASK_PROGRESS_ID.NOT_STARTED}
+                />
+            )}
             </div>
             <div>
                 <div style={styles.tableHead}>

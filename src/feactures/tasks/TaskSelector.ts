@@ -47,12 +47,13 @@ export const waitingTasksSelector = selector<Task[]>({
     },
 });
 
-export const completeTask = selector<Task[]>({
-    key: "SelectorKey",
+
+
+export const incompleteTask = selector<Task[]>({
+    key: 'SelectorKeys',
     get: ({ get }) => {
         return get(tasksState).filter((task) => {
             return task.progressOrder === 4;
         });
-    }
-})
-    
+    },
+});
