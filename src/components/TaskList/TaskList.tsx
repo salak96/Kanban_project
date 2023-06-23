@@ -5,8 +5,8 @@ import type { Task, CSSProperties } from '../../types';
 import TaskListItem from './TaskListItem';
 import { useState } from 'react';
 import TaskModal from '../shared/TaskModal'; // Ditambahkan
-import { TASK_PROGRESS_ID } from '../../constants/app'; // Ditambahkan
-// import css
+import { TASK_PROGRESS_ID, TASK_MODAL_TYPE } from '../../constants/app'; // Ditambahkan
+
 const TaskList = (): JSX.Element => {
     const task: Task[] = useRecoilValue(tasksState);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -25,13 +25,14 @@ const TaskList = (): JSX.Element => {
                 <button style={styles.button}>
                     <span className='material-icons'>sort</span>Filter tasks
                 </button>
-                        {isModalOpen && (
-                <TaskModal
-                headingTitle="Add your tasks" 
-                setIsModalOpen={setIsModalOpen}
-                defaultProgressOrder={TASK_PROGRESS_ID.NOT_STARTED}
-                />
-            )}
+                {isModalOpen && (
+                    <TaskModal
+                        headingTitle='Add your task'
+                        type={TASK_MODAL_TYPE.ADD} // Ditambahkan
+                        setIsModalOpen={setIsModalOpen}
+                        defaultProgressOrder={TASK_PROGRESS_ID.NOT_STARTED}
+                    />
+                )}
             </div>
             <div>
                 <div style={styles.tableHead}>

@@ -34,7 +34,7 @@ const getIconStyle = (progressOrder: number): React.CSSProperties => {
     };
 };
 const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
-    const { completedTask } = useTasksAction();
+    const { completeTask } = useTasksAction();
 
     return (
         <div style={styles.tableBody}>
@@ -43,7 +43,7 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
                     className='material-icons'
                     style={getIconStyle(task.progressOrder)}
                     onClick={(): void => {
-                        completedTask(task.id); // Ditambahkan
+                        completeTask(task.id); // Ditambahkan
                     }}
                 >
                     check_circle

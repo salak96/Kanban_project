@@ -47,8 +47,6 @@ export const waitingTasksSelector = selector<Task[]>({
     },
 });
 
-
-
 export const incompleteTask = selector<Task[]>({
     key: 'SelectorKeys',
     get: ({ get }) => {
