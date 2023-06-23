@@ -4,7 +4,8 @@ import { TASK_PROGRESS_ID } from '../../constants/app';
 import { useMoveTask } from '../../feactures/hooks/MoveTask';
 import { incompleteTask } from '../../feactures/tasks/TaskSelector';
 import { useRecoilValue } from 'recoil';
-
+import { useState } from 'react';
+import TaskMenu from '../shared/TaskMenu'; // Ditambahkan
 interface TaskCardProps {
     task: Task;
 }
@@ -35,7 +36,7 @@ export const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
             justifyContent: justifyContentValue,
         };
     };
-
+    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
     return (
         <div style={styles.taskCard}>
             <div style={styles.taskIcons}>
@@ -47,6 +48,16 @@ export const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
                     check_circle
                 </div>
             </div>
+            <div
+                className='material-icons'
+                style={styles.menuIcon}
+                onClick={(): void => {
+                    setIsMenuOpen(true); // Ditambahkan
+                }}
+            >
+                more_vert
+            </div>
+
             <p style={styles.taskTitle}>{task.title}</p>
             <div>
                 <p>{task.detail}</p>
@@ -66,6 +77,8 @@ export const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
                     </button>
                 )}
             </div>
+                {/* Ditambahkan */}
+            {isMenuOpen && <TaskMenu setIsMenuOpen={setIsMenuOpen} />}
         </div>
     );
 };

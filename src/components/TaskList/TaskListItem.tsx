@@ -2,7 +2,8 @@ import React from 'react';
 import type { Task, CSSProperties } from '../../types';
 import { TASK_PROGRESS_STATUS, TASK_PROGRESS_ID } from '../../constants/app';
 import { useTasksAction } from '../../feactures/hooks/Task';
-
+import { useState } from 'react';
+import TaskMenu from '../shared/TaskMenu'; // Ditambahkan
 interface TaskListItemProps {
     task: Task;
 }
@@ -21,6 +22,7 @@ const getProgressCategory = (progressOrder: number): string => {
             return TASK_PROGRESS_STATUS.NOT_STARTED;
     }
 };
+
 // Definisikan function ini
 const getIconStyle = (progressOrder: number): React.CSSProperties => {
     const color: '#55C89F' | '#C5C5C5' = progressOrder === TASK_PROGRESS_ID.COMPLETED ? '#55C89F' : '#C5C5C5';
@@ -35,7 +37,7 @@ const getIconStyle = (progressOrder: number): React.CSSProperties => {
 };
 const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
     const { completeTask } = useTasksAction();
-
+    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
     return (
         <div style={styles.tableBody}>
             <div style={styles.tableBodyTaskTitle}>
@@ -44,6 +46,7 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
                     style={getIconStyle(task.progressOrder)}
                     onClick={(): void => {
                         completeTask(task.id); // Ditambahkan
+                        setIsMenuOpen(true); // Ditambahkan
                     }}
                 >
                     check_circle
@@ -57,6 +60,7 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
                 <span className='material-icons' style={styles.menuIcon}>
                     more_horiz
                 </span>
+                {isMenuOpen && <TaskMenu setIsMenuOpen={setIsMenuOpen} />}
             </div>
         </div>
     );
