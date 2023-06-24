@@ -36,7 +36,7 @@ export const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
             justifyContent: justifyContentValue,
         };
     };
-    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
+    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
     return (
         <div style={styles.taskCard}>
             <div style={styles.taskIcons}>
@@ -47,17 +47,16 @@ export const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
                 >
                     check_circle
                 </div>
+                <div
+                    className='material-icons'
+                    style={styles.menuIcon}
+                    onClick={(): void => {
+                        setIsMenuOpen(true); // Ditambahkan
+                    }}
+                >
+                    more_vert
+                </div>
             </div>
-            <div
-                className='material-icons'
-                style={styles.menuIcon}
-                onClick={(): void => {
-                    setIsMenuOpen(true); // Ditambahkan
-                }}
-            >
-                more_vert
-            </div>
-
             <p style={styles.taskTitle}>{task.title}</p>
             <div>
                 <p>{task.detail}</p>
@@ -77,7 +76,7 @@ export const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
                     </button>
                 )}
             </div>
-                {/* Ditambahkan */}
+            {/* Ditambahkan */}
             {isMenuOpen && <TaskMenu setIsMenuOpen={setIsMenuOpen} />}
         </div>
     );
@@ -102,6 +101,7 @@ const styles: CSSProperties = {
     taskIcons: {
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'space-between',
     },
     taskTitle: {
         fontWeight: 'bold',

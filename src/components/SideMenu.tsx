@@ -1,21 +1,23 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import type { CSSProperties } from '../types';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faListOl,faHouse} from '@fortawesome/free-solid-svg-icons'
+import { faRectangleList } from '@fortawesome/free-regular-svg-icons';
 const SideMenu = (): JSX.Element => {
     return (
         <div style={styles.container}>
             {/* icon rumah home */}
-            <span className='material-icons' style={styles.icon}>
-                home
-            </span>
-            <NavLink to='/' style={({ isActive }) => (isActive ? styles.activeLink : styles.link)}>
+            <NavLink  to='/' style={({ isActive }) => (isActive ? styles.activeLink : styles.link)}>
+            <FontAwesomeIcon icon={faHouse} />
                 <p style={styles.text}>Home</p>
             </NavLink>
             <NavLink to='/task-list' style={({ isActive }) => (isActive ? styles.activeLink : styles.link)}>
+            <FontAwesomeIcon icon={faRectangleList} style={styles.icon}/>
                 <p style={styles.text}>Task List</p>
             </NavLink>
             <NavLink to='/task-progress' style={({ isActive }) => (isActive ? styles.activeLink : styles.link)}>
+            <FontAwesomeIcon icon={faListOl} />
                 <p style={styles.text}>Task Progress</p>
             </NavLink>
         </div>
@@ -47,7 +49,7 @@ const styles: CSSProperties = {
         color: '#255261',
     },
     icon: {
-        fontSize: '40px',
+        fontSize: '20px',
     },
     text: {
         fontSize: '24px',
