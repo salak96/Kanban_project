@@ -16,8 +16,8 @@ const TaskForm = ({ type, defaultProgressOrder, setIsModalOpen }: TaskFormProps)
     const [dueDate, setDueDate] = useState<string>('');
     const [progressOrder, setProgressOrder] = useState<number>(defaultProgressOrder);
     const { addTask } = useTasksAction();
-    const handleSubmit = (): void => {
-        if (type === TASK_MODAL_TYPE.ADD) {
+    const handleEdit = (): void => {
+        if (type === TASK_MODAL_TYPE.EDIT) {
             addTask(title, detail, dueDate, progressOrder); // Ditambahkan
             setIsModalOpen(false); // Ditambahkan
         }
@@ -75,7 +75,7 @@ const TaskForm = ({ type, defaultProgressOrder, setIsModalOpen }: TaskFormProps)
                 type='button'
                 style={styles.button}
                 onClick={(): void => {
-                    handleSubmit(); // Ditambahkan
+                    handleEdit(); // Ditambahkan
                 }}
             >
                 Submit

@@ -5,7 +5,7 @@ import { useMoveTask } from '../../feactures/hooks/MoveTask';
 import { incompleteTask } from '../../feactures/tasks/TaskSelector';
 import { useRecoilValue } from 'recoil';
 import { useState } from 'react';
-import TaskMenu from '../shared/TaskMenu'; // Ditambahkan
+import TaskMenu from '../crud/TaskMenuEdit'; // Ditambahkan
 interface TaskCardProps {
     task: Task;
 }

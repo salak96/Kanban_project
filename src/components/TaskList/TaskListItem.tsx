@@ -3,7 +3,7 @@ import type { Task, CSSProperties } from '../../types';
 import { TASK_PROGRESS_STATUS, TASK_PROGRESS_ID } from '../../constants/app';
 import { useTasksAction } from '../../feactures/hooks/Task';
 import { useState } from 'react';
-import TaskMenu from '../shared/TaskMenu'; // Ditambahkan
+import TaskMenuEdit from '../crud/TaskMenuEdit'; // Ditambahkan
 interface TaskListItemProps {
     task: Task;
 }
@@ -63,9 +63,9 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
                         setIsMenuOpen(true) // Ditambahkan
                     }}
         >
-                    more_horiz
+                   more_horiz
                 </span>
-                {isMenuOpen && <TaskMenu setIsMenuOpen={setIsMenuOpen} />}
+                {isMenuOpen && <TaskMenuEdit setIsMenuOpen={setIsMenuOpen} />}
             </div>
         </div>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import type { CSSProperties } from '../../types';
-import TaskForm from './TaskForm';
+import TaskForm from './TaskFormEdit';
 
 interface TaskModalProps {
     headingTitle: string;
