@@ -47,6 +47,7 @@ const styles: CSSProperties = {
     activeLink: {
         ...commonLinkStyles,
         color: '#255261',
+        fontWeight: 'bold',
     },
     icon: {
         fontSize: '20px',
@@ -62,7 +63,7 @@ const styles: CSSProperties = {
 // Responsive styles
 styles.container = {
     ...styles.container,
-    width: '10%',
+    width: '15%',
 };
 
 styles.text = {
