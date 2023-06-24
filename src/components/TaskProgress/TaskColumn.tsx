@@ -1,19 +1,23 @@
 import React from 'react';
 import { TaskCard } from './TaskCard';
 import type { Task, CSSProperties } from '../../types';
-
+import TaskModal from '../shared/TaskModal'; // Ditambahkan
+import { TASK_PROGRESS_ID } from '../../constants/app'; // Ditambahkan
+import { useState } from 'react'; // useState ditambahkan
 interface TaskColumnProps {
     columnTitle: string;
     tasks: Task[];
 }
 
 const TaskColumn = ({ columnTitle, tasks }: TaskColumnProps): JSX.Element => {
+    // Ditambahkan
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     return (
         <div style={styles.categoryColumn}>
             <div style={styles.columnTitleWrapper}>
                 <h2 style={styles.categoryTitle}>{columnTitle}</h2>
                 <div className='material-icons' style={styles.plusIcon}>
-                    add
+                    <button onClick={() => setIsModalOpen(true)}>add</button>
                 </div>
             </div>
             <div>
@@ -21,6 +25,14 @@ const TaskColumn = ({ columnTitle, tasks }: TaskColumnProps): JSX.Element => {
                     return <TaskCard key={task.id} task={task} />;
                 })}
             </div>
+            {isModalOpen && (
+                <TaskModal
+                    headingTitle='Add your task'
+                    setIsModalOpen={setIsModalOpen}
+                    defaultProgressOrder={TASK_PROGRESS_ID.NOT_STARTED}
+                    type='add'
+                />
+            )}
         </div>
     );
 };
