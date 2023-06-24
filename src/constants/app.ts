@@ -16,3 +16,4 @@ export const TASK_MODAL_TYPE = {
     ADD: 'Add',
     EDIT: 'edit',
 };
+

@@ -57,7 +57,12 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
             <div style={styles.tableBodyprogress}>{task.progressOrder}</div>
             <div style={styles.tableBodyprogress}>{getProgressCategory(task.progressOrder)}</div>
             <div>
-                <span className='material-icons' style={styles.menuIcon}>
+            <span  className="material-icons"
+                    style={styles.menuIcon}
+                    onClick={(): void => {
+                        setIsMenuOpen(true) // Ditambahkan
+                    }}
+        >
                     more_horiz
                 </span>
                 {isMenuOpen && <TaskMenu setIsMenuOpen={setIsMenuOpen} />}
