@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import type { CSSProperties, Task } from '../../types';
 import TaskModalEdit from './TaskModalEdit';
-
 import { useEditTask } from '../../feactures/hooks/EditTask';
 
 interface TaskMenuProps {
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
   task: Task
   taskId: number
-
 }
 
 const TaskMenu = ({ setIsMenuOpen,taskId }: TaskMenuProps): JSX.Element => {
@@ -39,7 +37,6 @@ const TaskMenu = ({ setIsMenuOpen,taskId }: TaskMenuProps): JSX.Element => {
       cursor: 'pointer',
     },
   };
-
   return (
     <div style={styles.menu}>
       <div style={styles.menuItem}>
@@ -77,7 +74,6 @@ const TaskMenu = ({ setIsMenuOpen,taskId }: TaskMenuProps): JSX.Element => {
           type='edit'
           setIsModalOpen={setIsModalOpen}
           defaultProgressOrder={0}
-          task={task}
           taskId={taskId}
         />
       )}
