@@ -9,7 +9,7 @@ interface TaskModalProps {
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
   defaultProgressOrder: number;
   type: string;
-  task: Task; // Menambahkan prop "task" untuk mendapatkan nilai awal task yang akan diedit
+  task: Task; // Perbaiki tipe data prop "task" menjadi Task
 }
 
 const TaskModal = ({
@@ -20,7 +20,7 @@ const TaskModal = ({
   task,
 }: TaskModalProps): JSX.Element => {
   const [isEditable, setIsEditable] = useState<boolean>(true);
-  const { editTaskCard } = useEditTask();
+  const {editTaskCard} = useEditTask(); // Ubah penggunaan useEditTask menjadi editTaskCard
 
   const handleEditTask = (updatedTask: Task): void => {
     editTaskCard(updatedTask);
@@ -46,8 +46,8 @@ const TaskModal = ({
         defaultProgressOrder={defaultProgressOrder}
         setIsEditable={setIsEditable}
         task={task}
+        onEditTask={handleEditTask}
         taskId={task.id}
-        onEditTask={handleEditTask} // Pass the handleEditTask function as a prop to TaskForm
       />
       {!isEditable && <div style={styles.successMessage}>Task successfully updated.</div>}
     </div>

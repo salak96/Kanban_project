@@ -1,25 +1,22 @@
 import React, { useState } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
-import type { CSSProperties } from '../../types';
+import type { CSSProperties, Task } from '../../types';
 import TaskModalEdit from './TaskModalEdit';
-import { useDeleteTask } from '../../feactures/hooks/DeleteTask';
-import { useRecoilValue } from 'recoil';
-import { tasksState } from '../../feactures/TaskAtoms';
+
+import { useEditTask } from '../../feactures/hooks/EditTask';
 
 interface TaskMenuProps {
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
+  task: Task
+  taskId: number
+
 }
 
-const TaskMenu = ({ setIsMenuOpen }: TaskMenuProps): JSX.Element => {
+const TaskMenu = ({ setIsMenuOpen,taskId }: TaskMenuProps): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const deleteTask = useDeleteTask();
-  const tasks = useRecoilValue(tasksState);
-
-  const handleDelete = (taskId: number): void => {
-    deleteTask(taskId);
-    setIsMenuOpen(false);
-  };
-
+  const {deleteTask} = useEditTask();
+  console.log(deleteTask);
+  // const tasks = useRecoilValue(tasksState);
   const styles: CSSProperties = {
     menu: {
       backgroundColor: '#fff',
@@ -43,8 +40,6 @@ const TaskMenu = ({ setIsMenuOpen }: TaskMenuProps): JSX.Element => {
     },
   };
 
-  const task = tasks[0];
-
   return (
     <div style={styles.menu}>
       <div style={styles.menuItem}>
@@ -61,7 +56,7 @@ const TaskMenu = ({ setIsMenuOpen }: TaskMenuProps): JSX.Element => {
         <button
           style={styles.button}
           onClick={() => {
-            handleDelete(task.id);
+            deleteTask(taskId);
           }}
         >
           <span className='material-icons'>delete</span>Delete
@@ -83,6 +78,7 @@ const TaskMenu = ({ setIsMenuOpen }: TaskMenuProps): JSX.Element => {
           setIsModalOpen={setIsModalOpen}
           defaultProgressOrder={0}
           task={task}
+          taskId={taskId}
         />
       )}
     </div>

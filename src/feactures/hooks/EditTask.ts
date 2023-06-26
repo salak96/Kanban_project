@@ -7,11 +7,17 @@ export const useEditTask = () => {
   const [tasks, setTasks] = useRecoilState(tasksState);
   const [isEditable, setIsEditable] = useState<boolean>(false);
 
+  const deleteTask = (taskId: number): void => {
+    const updatedTasks: Task[] = tasks.filter((task) => task.id !== taskId);
+    setTasks(updatedTasks);
+  };
+
   const updateTaskProgress = (updatedTask: Task, progressOrder: number): Task => {
     return { ...updatedTask, progressOrder };
   };
+  
 
-  const editTaskCard = (updatedTask: Task): void => {
+  const editTask = (updatedTask: Task): void => {
     setIsEditable(true);
     const updatedTasks = tasks.map((task) =>
       task.id === updatedTask.id ? updateTaskProgress(updatedTask, updatedTask.progressOrder) : task
@@ -22,6 +28,7 @@ export const useEditTask = () => {
 
   return {
     tasks,
-    editTaskCard,
+    editTask,
+    deleteTask
   };
 };
