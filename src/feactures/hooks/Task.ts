@@ -8,6 +8,8 @@ interface useTaskActionType {
     moveTaskCard: (taskId: number, directionNumber: 1 | -1) => void;
     addTask: (title: string, detail: string, dueDate: string, progressOrder: number) => void;
     editTask: (task: Task) => void;
+    completedTask: (taskId: number) => void;
+    deleteTask: (taskId: number) => void;
 }
 
 export const useTasksAction = (): useTaskActionType => {

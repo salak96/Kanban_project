@@ -42,8 +42,6 @@ const TaskModal = ({
         setIsEditable={setIsEditable}
         task={task}
         taskId={task.id}
-        setIsEditable={setIsEditable}
-        setIsModalOpen={setIsModalOpen}
         onEditTask={useEditTask}
       />
       {!isEditable && <div style={styles.successMessage}>Task successfully updated.</div>}

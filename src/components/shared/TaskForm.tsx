@@ -12,9 +12,9 @@ interface TaskFormProps {
 }
 
 const TaskForm = ({ type, defaultProgressOrder, setIsModalOpen,task }: TaskFormProps): JSX.Element => {
-    const [title, setTitle] = useState<string>('');
-    const [detail, setDetail] = useState<string>('');
-    const [dueDate, setDueDate] = useState<string>('');
+    const [title, setTitle] = useState<string>(task?.title||'');
+    const [detail, setDetail] = useState<string>(task?.detail||'');
+    const [dueDate, setDueDate] = useState<string>(task?.dueDate||'');
     const [progressOrder, setProgressOrder] = useState<number>(defaultProgressOrder);
     const { addTask,editTask } = useTasksAction();
     
