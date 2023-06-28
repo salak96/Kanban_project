@@ -29,6 +29,9 @@ export const useEditTask = () => {
   return {
     tasks,
     editTask,
-    deleteTask
+    deleteTask,
+    isEditable
+    
+
   };
 };

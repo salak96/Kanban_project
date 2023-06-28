@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import type { CSSProperties, Task } from '../../types';
-import TaskModalEdit from './TaskModalEdit';
 import { useEditTask } from '../../feactures/hooks/EditTask';
+import TaskModal from '../shared/TaskModal';
+import { TASK_MODAL_TYPE, TASK_PROGRESS_ID } from '../../constants/app';
 
 interface TaskMenuProps {
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
   task: Task
   taskId: number
 }
-
-const TaskMenu = ({ setIsMenuOpen,taskId }: TaskMenuProps): JSX.Element => {
+const TaskMenu = ({ setIsMenuOpen,taskId,task }: TaskMenuProps): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const {deleteTask} = useEditTask();
-  console.log(deleteTask);
-  // const tasks = useRecoilValue(tasksState);
+
+
+
   const styles: CSSProperties = {
     menu: {
       backgroundColor: '#fff',
@@ -69,14 +70,16 @@ const TaskMenu = ({ setIsMenuOpen,taskId }: TaskMenuProps): JSX.Element => {
         close
       </span>
       {isModalOpen && (
-        <TaskModalEdit
-          headingTitle='Edit Task'
-          type='edit'
-          setIsModalOpen={setIsModalOpen}
-          defaultProgressOrder={0}
-          taskId={taskId}
-        />
+        <TaskModal
+        headingTitle='Add your task'
+        type={TASK_MODAL_TYPE.EDIT} // Ditambahkan
+        setIsModalOpen={setIsModalOpen}
+        defaultProgressOrder={TASK_PROGRESS_ID.NOT_STARTED}
+        task={task}
+        
+       />
       )}
+    
     </div>
   );
 };

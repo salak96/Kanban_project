@@ -7,6 +7,7 @@ import { useState } from 'react';
 interface useTaskActionType {
     moveTaskCard: (taskId: number, directionNumber: 1 | -1) => void;
     addTask: (title: string, detail: string, dueDate: string, progressOrder: number) => void;
+    editTask: (task: Task) => void;
 }
 
 export const useTasksAction = (): useTaskActionType => {
@@ -18,15 +19,13 @@ export const useTasksAction = (): useTaskActionType => {
         setTasks(updatedTasks);
     };
 
-    const editTask = (taskId: number): void => {
+    const editTask = (value:Task ): void => {
         setIsEditable(true);
-        const updatedTasks = tasks.map((task) => (task.id === taskId ? updateTaskProgress(task, TASK_PROGRESS_ID.IN_PROGRESS) : task));
+        const updatedTasks = tasks.map((task) => (task.id === value.id ? value:task));
         setTasks(updatedTasks);
     };
 
-    const updateTaskProgress = (task: Task, progressOrder: number): Task => {
-        return { ...task, progressOrder };
-    };
+   
 
     const deleteTask = (taskId: number): void => {
         const updatedTasks: Task[] = tasks.filter((task) => task.id !== taskId);

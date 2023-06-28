@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TASK_PROGRESS_ID, TASK_PROGRESS_STATUS } from '../../constants/app';
 import type { CSSProperties, Task } from '../../types';
-import { useTasksAction } from '../../feactures/hooks/Task';
 import type { Dispatch, SetStateAction } from 'react';
 
 interface TaskFormProps {
@@ -23,7 +22,7 @@ const TaskForm = ({
   const [detail, setDetail] = useState<string>('');
   const [dueDate, setDueDate] = useState<string>('');
   const [progressOrder, setProgressOrder] = useState<number>(defaultProgressOrder);
-  const editTask = useTasksAction();
+
 
   useEffect(() => {
     // Set initial form values based on the provided task

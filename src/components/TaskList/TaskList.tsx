@@ -31,6 +31,7 @@ const TaskList = (): JSX.Element => {
                         type={TASK_MODAL_TYPE.ADD} // Ditambahkan
                         setIsModalOpen={setIsModalOpen}
                         defaultProgressOrder={TASK_PROGRESS_ID.NOT_STARTED}
+                       
                     />
                 )}
             </div>

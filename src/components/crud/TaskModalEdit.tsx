@@ -10,6 +10,7 @@ interface TaskModalProps {
   defaultProgressOrder: number;
   type: string;
   task: Task; // Perbaiki tipe data prop "task" menjadi Task
+  taskId: number
 }
 
 const TaskModal = ({
@@ -20,13 +21,7 @@ const TaskModal = ({
   task,
 }: TaskModalProps): JSX.Element => {
   const [isEditable, setIsEditable] = useState<boolean>(true);
-  const {editTaskCard} = useEditTask(); // Ubah penggunaan useEditTask menjadi editTaskCard
-
-  const handleEditTask = (updatedTask: Task): void => {
-    editTaskCard(updatedTask);
-    setIsEditable(false);
-  };
-
+  
   return (
     <div style={styles.container}>
       <div style={styles.modalTop}>
@@ -46,8 +41,10 @@ const TaskModal = ({
         defaultProgressOrder={defaultProgressOrder}
         setIsEditable={setIsEditable}
         task={task}
-        onEditTask={handleEditTask}
         taskId={task.id}
+        setIsEditable={setIsEditable}
+        setIsModalOpen={setIsModalOpen}
+        onEditTask={useEditTask}
       />
       {!isEditable && <div style={styles.successMessage}>Task successfully updated.</div>}
     </div>
