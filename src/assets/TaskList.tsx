@@ -11,7 +11,6 @@ import FilterModal from '../crud/FilterTaskModal';
 const TaskList = (): JSX.Element => {
     const task: Task[] = useRecoilValue(tasksState);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-    const [isEditable, setIsEditable] = useState<boolean>(false);
     return (
         <div style={styles.container}>
             <h1 style={styles.heading}>Your Tasks</h1>
@@ -33,21 +32,21 @@ const TaskList = (): JSX.Element => {
                        
                     /> 
                 )}  
+
                 <button
                     style={styles.button}
                     onClick={() => {
-                        setIsEditable(true);
+                        setIsModalOpen(true);
                     }}
                 >
                     <span className='material-icons'>sort</span>Filter tasks
                 </button>
-                {isEditable && (
+                {isModalOpen && (
                     <FilterModal
                         title1='Sort by'
                         title2='Progress'
                         title3='Due date'
-                        type={TASK_MODAL_TYPE.FILTER} // Ditambahkan
-                        setIsEditable={setIsEditable}
+                    
                     /> 
                 )} 
                
