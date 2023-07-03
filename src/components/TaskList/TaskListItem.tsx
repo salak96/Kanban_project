@@ -36,7 +36,7 @@ const getIconStyle = (progressOrder: number): React.CSSProperties => {
     };
 };
 const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
-    const  {completeTask}  = useTasksAction();
+    const  {completedTask}  = useTasksAction();
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
     return (
         <div style={styles.tableBody}>
@@ -45,7 +45,7 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
                     className='material-icons'
                     style={getIconStyle(task.progressOrder)}
                     onClick={(): void => {
-                        completeTask(task.id);
+                        completedTask(task.id);
                         setIsMenuOpen(true); // Ditambahkan
                     }}
                 >
