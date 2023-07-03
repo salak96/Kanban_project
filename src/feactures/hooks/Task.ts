@@ -14,20 +14,18 @@ interface useTaskActionType {
 
 export const useTasksAction = (): useTaskActionType => {
     const [tasks, setTasks] = useRecoilState(tasksState);
-    const [isEditable, setIsEditable] = useState<boolean>(false);
+    const [setIsFilter, setFilter] = useState<boolean>(false);
 
     const completedTask = (taskId: number): void => {
         const updatedTasks: Task[] = tasks.map((task) => (task.id === taskId ? { ...task, progressOrder: TASK_PROGRESS_ID.COMPLETED } : task));
         setTasks(updatedTasks);
     };
 
-    const editTask = (value:Task ): void => {
-        setIsEditable(true);
-        const updatedTasks = tasks.map((task) => (task.id === value.id ? value:task));
+    const editTask = (value: Task): void => {
+        setFilter(true);
+        const updatedTasks = tasks.map((task) => (task.id === value.id ? value : task));
         setTasks(updatedTasks);
     };
-
-   
 
     const deleteTask = (taskId: number): void => {
         const updatedTasks: Task[] = tasks.filter((task) => task.id !== taskId);

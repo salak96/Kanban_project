@@ -20,7 +20,7 @@ const TaskModal = ({
   defaultProgressOrder,
   task,
 }: TaskModalProps): JSX.Element => {
-  const [isEditable, setIsEditable] = useState<boolean>(true);
+  const [setIsFilter, setFilter] = useState<boolean>(true);
   
   return (
     <div style={styles.container}>
@@ -39,12 +39,12 @@ const TaskModal = ({
       <TaskForm
         type={type}
         defaultProgressOrder={defaultProgressOrder}
-        setIsEditable={setIsEditable}
+        setFilter={setFilter}
         task={task}
         taskId={task.id}
         onEditTask={useEditTask}
       />
-      {!isEditable && <div style={styles.successMessage}>Task successfully updated.</div>}
+      {!setIsFilter && <div style={styles.successMessage}>Task successfully updated.</div>}
     </div>
   );
 };

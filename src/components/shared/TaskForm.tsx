@@ -8,23 +8,23 @@ interface TaskFormProps {
     type: string;
     defaultProgressOrder: number;
     setIsModalOpen: Dispatch<SetStateAction<boolean>>; // Ditambahkan
-    task ? : Task;
+    task?: Task;
 }
 
-const TaskForm = ({ type, defaultProgressOrder, setIsModalOpen,task }: TaskFormProps): JSX.Element => {
-    const [title, setTitle] = useState<string>(task?.title||'');
-    const [detail, setDetail] = useState<string>(task?.detail||'');
-    const [dueDate, setDueDate] = useState<string>(task?.dueDate||'');
+const TaskForm = ({ type, defaultProgressOrder, setIsModalOpen, task }: TaskFormProps): JSX.Element => {
+    const [title, setTitle] = useState<string>(task?.title || '');
+    const [detail, setDetail] = useState<string>(task?.detail || '');
+    const [dueDate, setDueDate] = useState<string>(task?.dueDate || '');
     const [progressOrder, setProgressOrder] = useState<number>(defaultProgressOrder);
-    const { addTask,editTask } = useTasksAction();
-    
+    const { addTask, editTask } = useTasksAction();
+
     const handleSubmit = (): void => {
         if (type === TASK_MODAL_TYPE.ADD) {
             addTask(title, detail, dueDate, progressOrder); // Ditambahkan
             setIsModalOpen(false); // Ditambahkan
         }
-        if(task && type === TASK_MODAL_TYPE.EDIT) {
-            editTask({id:task.id,title, detail,dueDate,progressOrder});
+        if (task && type === TASK_MODAL_TYPE.EDIT) {
+            editTask({ id: task.id, title, detail, dueDate, progressOrder });
             setIsModalOpen(false); // Ditambahkan
         }
     };

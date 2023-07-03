@@ -8,10 +8,10 @@ interface TaskModalProps {
     setIsModalOpen: Dispatch<SetStateAction<boolean>>;
     defaultProgressOrder: number;
     type: string;
-    task ? : Task;
+    task?: Task;
 }
 
-const TaskModal = ({ headingTitle, type, setIsModalOpen, defaultProgressOrder,task }: TaskModalProps): JSX.Element => {
+const TaskModal = ({ headingTitle, type, setIsModalOpen, defaultProgressOrder, task }: TaskModalProps): JSX.Element => {
     return (
         <div style={styles.container}>
             <div style={styles.modalTop}>
@@ -26,8 +26,7 @@ const TaskModal = ({ headingTitle, type, setIsModalOpen, defaultProgressOrder,ta
                     close
                 </span>
             </div>
-            <TaskForm type={type} defaultProgressOrder={defaultProgressOrder} setIsModalOpen={setIsModalOpen}
-            task={task} />
+            <TaskForm type={type} defaultProgressOrder={defaultProgressOrder} setIsModalOpen={setIsModalOpen} task={task} />
         </div>
     );
 };

@@ -36,7 +36,7 @@ const getIconStyle = (progressOrder: number): React.CSSProperties => {
     };
 };
 const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
-    const  {completedTask}  = useTasksAction();
+    const { completedTask } = useTasksAction();
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
     return (
         <div style={styles.tableBody}>
@@ -66,10 +66,7 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
                 >
                     more_horiz
                 </span>
-                {isMenuOpen && <TaskMenuEdit setIsMenuOpen={setIsMenuOpen} task={task} taskId={task.id}
-                
-                />}
-           
+                {isMenuOpen && <TaskMenuEdit setIsMenuOpen={setIsMenuOpen} task={task} taskId={task.id} />}
             </div>
         </div>
     );
