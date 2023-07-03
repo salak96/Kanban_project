@@ -14,6 +14,7 @@ interface FilterModalProps {
 }
 
 const FilterModal = ({ title1, title2, title3, setIsModal }: FilterModalProps): JSX.Element => {
+    
     return (
         <div style={styles.container}>
             <span
@@ -45,13 +46,14 @@ const styles: CSSProperties = {
     container: {
         border: '1px solid gray',
         position: 'fixed',
-        top: '1%',
-        left: '50%',
-        width: '6%',
+        top: '5%',
+        left: '52%',
+        width: '7%',
         transform: 'translateX(-30%)',
         backgroundColor: '#fff',
         padding: '28px',
         zIndex: 10,
+        fontSize: '11px',
     },
     icon: {
         cursor: 'pointer',
@@ -61,9 +63,10 @@ const styles: CSSProperties = {
     },
     title: {
         display: 'flex',
-        justifyContent: 'space-between',
+        flexDirection: 'row',
         alignItems: 'center',
         cursor: 'pointer',
+   
     },
 };
 

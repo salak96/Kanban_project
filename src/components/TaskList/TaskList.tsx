@@ -42,7 +42,7 @@ const TaskList = (): JSX.Element => {
                     <span className='material-icons'>sort</span>Filter tasks
                 </button>
                 {setIsFilter && (
-                    <FilterModal title1='Sort by' title2='Progress' title3='Due date' setIsModal={setFilter} type={TASK_MODAL_TYPE.FILTER} />
+                    <FilterModal title1='Completed Tasks' title2='Uncompleted Tasks' title3='All Tasks' setIsModal={setFilter} type={TASK_MODAL_TYPE.FILTER} />
                 )}
             </div>
             <div>
