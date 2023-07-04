@@ -7,6 +7,7 @@ import { useState } from 'react';
 import TaskModal from '../shared/TaskModal'; // Ditambahkan
 import { TASK_PROGRESS_ID, TASK_MODAL_TYPE } from '../../constants/app'; // Ditambahkan
 import FilterModal from '../crud/FilterTaskModal';
+import { FilterState } from '../../feactures/FilterTaskAtom';
 
 const TaskList = (): JSX.Element => {
     const task: Task[] = useRecoilValue(tasksState);
@@ -42,7 +43,14 @@ const TaskList = (): JSX.Element => {
                     <span className='material-icons'>sort</span>Filter tasks
                 </button>
                 {setIsFilter && (
-                    <FilterModal title1='Completed Tasks' title2='Uncompleted Tasks' title3='All Tasks' setIsModal={setFilter} type={TASK_MODAL_TYPE.FILTER} />
+                    <FilterModal
+                        title1='Completed Tasks'
+                        title2='Uncompleted Tasks'
+                        title3='All Tasks'
+                        setIsModal={setFilter}
+                        type={TASK_MODAL_TYPE.FILTER}
+                        task={FilterState}
+                    />
                 )}
             </div>
             <div>
