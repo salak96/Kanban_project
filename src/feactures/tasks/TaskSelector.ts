@@ -65,13 +65,13 @@ export const filterTask = selector({
         const taks = get(tasksState);
 
         // Menghasilkan state yang diperbarui berdasarkan nilai filter
-        if (filter === 'all') {
-            return taks.filter((FilterState) => FilterState.progressOrder === 4);
-        }
         if (filter === 'completed') {
             return taks.filter((FilterState) => FilterState.progressOrder === 4);
         }
         if (filter === 'uncompleted') {
+            return taks.filter((FilterState) => FilterState.progressOrder == 1);
+        }
+        if (filter === 'all') {
             return taks.filter((FilterState) => FilterState.progressOrder !== 4);
         }
     },
