@@ -1,6 +1,7 @@
 import { atom } from 'recoil';
+import type {FilterInterface} from '../types';
 
-export const FilterState = atom({
+export const FilterState = atom<FilterInterface[]>({
     key: 'FilterState',
     default: [
         {

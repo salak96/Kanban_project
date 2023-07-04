@@ -16,5 +16,5 @@ export interface UserId {
 
 export interface FilterInterface {
     id: number;
-    title: string;
+    type: string;
 }

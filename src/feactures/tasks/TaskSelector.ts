@@ -59,20 +59,20 @@ export const incompleteTask = selector<Task[]>({
 
 //filter task
 export const filterTask = selector({
-    key: 'FilterTask',
+    key: 'Select',
     get: ({ get }) => {
-        const filter = get(FilterStateId); // ditambahkan
-        const taks = get(FilterState);
+        const filter = get(FilterStateId);
+        const taks = get(tasksState);
 
         // Menghasilkan state yang diperbarui berdasarkan nilai filter
         if (filter === 'all') {
-            return taks.filter((FilterState) => FilterState.type === filter);
+            return taks.filter((FilterState) => FilterState.progressOrder === 4);
         }
         if (filter === 'completed') {
-            return taks.filter((FilterState) => FilterState.type === filter);
+            return taks.filter((FilterState) => FilterState.progressOrder === 4);
         }
         if (filter === 'uncompleted') {
-            return taks.filter((FilterState) => FilterState.type === filter);
+            return taks.filter((FilterState) => FilterState.progressOrder !== 4);
         }
     },
 });

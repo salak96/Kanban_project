@@ -7,14 +7,16 @@ import { useState } from 'react';
 import TaskModal from '../shared/TaskModal'; // Ditambahkan
 import { TASK_PROGRESS_ID, TASK_MODAL_TYPE } from '../../constants/app'; // Ditambahkan
 import FilterModal from '../crud/FilterTaskModal';
-import { FilterState } from '../../feactures/FilterTaskAtom';
+import { filterTask } from '../../feactures/tasks/TaskSelector';
 
 
 const TaskList = (): JSX.Element => {
     const task: Task[] = useRecoilValue(tasksState);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [setIsFilter, setFilter] = useState<boolean>(false);
-    const filtetTask = useRecoilValue(FilterState);
+    const filter = useRecoilValue(filterTask);
+   
+
     return (
         <div style={styles.container}>
             <h1 style={styles.heading}>Your Tasks</h1>
@@ -51,10 +53,13 @@ const TaskList = (): JSX.Element => {
                         title3='All Tasks'
                         setIsModal={setFilter}
                         type={TASK_MODAL_TYPE.FILTER}
-                        
                     />
                 )}
             </div>
+            <div>
+     
+         </div>
+
             <div>
                 <div style={styles.tableHead}>
                     <div style={styles.tableHeaderTaskName}>Task Name</div>
@@ -62,7 +67,7 @@ const TaskList = (): JSX.Element => {
                     <div style={styles.tableHeaderDueDate}>Due Date</div>
                     <div style={styles.tableHeaderProgress}>Progress</div>
                 </div>
-                {task.map((task: Task) => {
+                {filter?.map((task: Task) => {
                     return <TaskListItem key={task.id} task={task} />;
                 })}
             </div>
