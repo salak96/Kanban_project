@@ -4,16 +4,15 @@ import type { CSSProperties, Task } from '../../types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBarsProgress, faCheck, faListCheck } from '@fortawesome/free-solid-svg-icons';
 import { useSetRecoilState } from 'recoil';
-import { FilterStateId,FilterState } from '../../feactures/FilterTaskAtom';
+import { FilterStateId } from '../../feactures/FilterTaskAtom';
 interface FilterModalProps {
     title1: string;
     title2: string;
     title3: string;
     setIsModal: Dispatch<SetStateAction<boolean>>;
     type: string;
-    task ? : FilterState;
 }
-const FilterModal = ({ title1, title2, title3, setIsModal,task }: FilterModalProps): JSX.Element => {
+const FilterModal = ({ title1, title2, title3, setIsModal }: FilterModalProps): JSX.Element => {
     const setFilter = useSetRecoilState(FilterStateId);
   console.log(setFilter);
     return (
