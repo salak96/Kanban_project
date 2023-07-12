@@ -39,6 +39,7 @@ const TaskList = (): JSX.Element => {
                     onClick={() => {
                         setFilter(true);
                     }}
+                    data-testid='add-task-filter' // Ditambahkan
                 >
                     <span className='material-icons'>sort</span>Filter tasks
                 </button>

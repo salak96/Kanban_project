@@ -26,9 +26,9 @@ describe('TaskList Component', () => {
       })
     //   filter
     test('Filter Task Modal can be opend and closed', async () => {
-        await user.click(screen.getByTestId('add-task-button'))
+        await user.click(screen.getByTestId('add-task-filter'))
         await waitFor(() => {
-          expect(screen.getByTestId('task-modal')).toBeInTheDocument()
+          expect(screen.getByTestId('task-filter')).toBeInTheDocument()
         })
 
     })

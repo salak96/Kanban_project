@@ -15,13 +15,16 @@ const FilterModal = ({ title1, title2, title3, setIsModal }: FilterModalProps): 
     const setFilter = useSetRecoilState(FilterStateId);
 
     return (
-        <div style={styles.container}>
+        <div style={styles.container}
+        data-testid="task-filter" // Ditambahkan
+        >
             <span
                 className='material-icons'
                 style={styles.icon}
                 onClick={(): void => {
                     setIsModal(false);
                 }}
+                data-testid="close-modal-button" // Ditambahkan
             >
                 close
             </span>
