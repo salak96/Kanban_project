@@ -7,7 +7,6 @@ import { TASK_PROGRESS_ID, TASK_MODAL_TYPE } from '../../constants/app'; // Dita
 import FilterModal from '../crud/FilterTaskModal';
 import { filterTask } from '../../feactures/tasks/TaskSelector';
 
-
 const TaskList = (): JSX.Element => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [setIsFilter, setFilter] = useState<boolean>(false);
@@ -22,6 +21,7 @@ const TaskList = (): JSX.Element => {
                     onClick={() => {
                         setIsModalOpen(true);
                     }}
+                    data-testid='add-task-button' // Ditambahkan
                 >
                     <span className='material-icons'>add</span>Add task
                 </button>
@@ -52,9 +52,7 @@ const TaskList = (): JSX.Element => {
                     />
                 )}
             </div>
-            <div>
-     
-         </div>
+            <div></div>
 
             <div>
                 <div style={styles.tableHead}>

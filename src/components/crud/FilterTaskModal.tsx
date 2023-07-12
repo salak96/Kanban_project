@@ -13,7 +13,7 @@ interface FilterModalProps {
 }
 const FilterModal = ({ title1, title2, title3, setIsModal }: FilterModalProps): JSX.Element => {
     const setFilter = useSetRecoilState(FilterStateId);
- 
+
     return (
         <div style={styles.container}>
             <span

@@ -38,7 +38,10 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
     const { completedTask } = useTasksAction();
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
     return (
-        <div style={styles.tableBody}>
+        <div
+            style={styles.tableBody}
+            data-testid='task-list-item' // Ditambahkan
+        >
             <div style={styles.tableBodyTaskTitle}>
                 <span
                     className='material-icons'
@@ -47,6 +50,7 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
                         completedTask(task.id);
                         setIsMenuOpen(true); // Ditambahkan
                     }}
+                    data-testid='task-menu-button' // Ditambahkan
                 >
                     check_circle
                 </span>

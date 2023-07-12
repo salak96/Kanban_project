@@ -17,7 +17,10 @@ const TaskModal = ({ headingTitle, type, setIsModalOpen, defaultProgressOrder, t
     const [setIsFilter, setFilter] = useState<boolean>(true);
 
     return (
-        <div style={styles.container}>
+        <div
+            style={styles.container}
+            data-testid='task-modal' // Ditambahkan
+        >
             <div style={styles.modalTop}>
                 <h1>{headingTitle}</h1>
                 <span
@@ -26,6 +29,7 @@ const TaskModal = ({ headingTitle, type, setIsModalOpen, defaultProgressOrder, t
                     onClick={(): void => {
                         setIsModalOpen(false);
                     }}
+                    data-testid='close-modal-button' // Ditambahkan
                 >
                     close
                 </span>

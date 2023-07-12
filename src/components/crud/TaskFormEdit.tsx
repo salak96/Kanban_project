@@ -1,4 +1,4 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { TASK_PROGRESS_ID, TASK_PROGRESS_STATUS } from '../../constants/app';
 import type { CSSProperties, Task } from '../../types';
 import type { Dispatch, SetStateAction } from 'react';

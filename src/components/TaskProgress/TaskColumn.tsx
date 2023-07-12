@@ -1,4 +1,3 @@
-;
 import { TaskCard } from './TaskCard';
 import type { Task, CSSProperties } from '../../types';
 import TaskModal from '../shared/TaskModal'; // Ditambahkan
