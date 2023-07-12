@@ -1,4 +1,3 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import type { CSSProperties } from '../types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
-import type { CSSProperties, Task } from '../../types';
+import type { CSSProperties } from '../../types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBarsProgress, faCheck, faListCheck } from '@fortawesome/free-solid-svg-icons';
 import { useSetRecoilState } from 'recoil';
