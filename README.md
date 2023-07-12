@@ -148,4 +148,5 @@ export default App
 export interface CSSProperties {
   [key: string]: React.CSSProperties
 }
+
 ```
