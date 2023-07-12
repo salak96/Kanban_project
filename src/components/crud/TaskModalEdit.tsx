@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
-import type { CSSProperties } from '../../types';
+import type { CSSProperties, Task } from '../../types';
 import TaskForm from './TaskFormEdit';
+import { useEditTask } from '../../feactures/hooks/EditTask';
 
 interface TaskModalProps {
     headingTitle: string;
     setIsModalOpen: Dispatch<SetStateAction<boolean>>;
     defaultProgressOrder: number;
     type: string;
+    task: Task; // Perbaiki tipe data prop "task" menjadi Task
+    taskId: number;
 }
 
-const TaskModal = ({ headingTitle, type, setIsModalOpen, defaultProgressOrder }: TaskModalProps): JSX.Element => {
+const TaskModal = ({ headingTitle, type, setIsModalOpen, defaultProgressOrder, task }: TaskModalProps): JSX.Element => {
+    const [setIsFilter, setFilter] = useState<boolean>(true);
+
     return (
         <div style={styles.container}>
             <div style={styles.modalTop}>
@@ -25,7 +30,15 @@ const TaskModal = ({ headingTitle, type, setIsModalOpen, defaultProgressOrder }:
                     close
                 </span>
             </div>
-            <TaskForm type={type} defaultProgressOrder={defaultProgressOrder} setIsModalOpen={setIsModalOpen} />
+            <TaskForm
+                type={type}
+                defaultProgressOrder={defaultProgressOrder}
+                setFilter={setFilter}
+                task={task}
+                taskId={task.id}
+                onEditTask={useEditTask}
+            />
+            {!setIsFilter && <div style={styles.successMessage}>Task successfully updated.</div>}
         </div>
     );
 };
@@ -47,6 +60,10 @@ const styles: CSSProperties = {
     },
     icon: {
         cursor: 'pointer',
+    },
+    successMessage: {
+        marginTop: '16px',
+        color: 'red',
     },
 };
 

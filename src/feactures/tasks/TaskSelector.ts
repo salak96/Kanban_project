@@ -1,7 +1,8 @@
 import { selector } from 'recoil';
 import { tasksState } from '../TaskAtoms';
-import type { Task } from '../../types';
+import type { FilterInterface, Task } from '../../types';
 import { SelectorKeys } from '../../constants/recoilKeys';
+import { FilterState, FilterStateId } from '../FilterTaskAtom';
 
 export const uncompletedTasksSelector = selector<Task[]>({
     key: SelectorKeys.UNCOMPLETED_TASKS,
@@ -53,5 +54,25 @@ export const incompleteTask = selector<Task[]>({
         return get(tasksState).filter((task) => {
             return task.progressOrder === 4;
         });
+    },
+});
+
+//filter task
+export const filterTask = selector({
+    key: 'Select',
+    get: ({ get }) => {
+        const filter = get(FilterStateId);
+        const taks = get(tasksState);
+
+        // Menghasilkan state yang diperbarui berdasarkan nilai filter
+        if (filter === 'completed') {
+            return taks.filter((FilterState) => FilterState.progressOrder === 4);
+        }
+        if (filter === 'uncompleted') {
+            return taks.filter((FilterState) => FilterState.progressOrder == 1);
+        }
+        if (filter === 'all') {
+            return taks.filter((FilterState) => FilterState.progressOrder !== 4);
+        }
     },
 });

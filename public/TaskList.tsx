@@ -7,16 +7,10 @@ import { useState } from 'react';
 import TaskModal from '../shared/TaskModal'; // Ditambahkan
 import { TASK_PROGRESS_ID, TASK_MODAL_TYPE } from '../../constants/app'; // Ditambahkan
 import FilterModal from '../crud/FilterTaskModal';
-import { filterTask } from '../../feactures/tasks/TaskSelector';
-
 
 const TaskList = (): JSX.Element => {
     const task: Task[] = useRecoilValue(tasksState);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-    const [setIsFilter, setFilter] = useState<boolean>(false);
-    const filter = useRecoilValue(filterTask);
-   
-
     return (
         <div style={styles.container}>
             <h1 style={styles.heading}>Your Tasks</h1>
@@ -35,31 +29,28 @@ const TaskList = (): JSX.Element => {
                         type={TASK_MODAL_TYPE.ADD} // Ditambahkan
                         setIsModalOpen={setIsModalOpen}
                         defaultProgressOrder={TASK_PROGRESS_ID.NOT_STARTED}
-                    />
-                )}
+                       
+                    /> 
+                )}  
 
                 <button
                     style={styles.button}
                     onClick={() => {
-                        setFilter(true);
+                        setIsModalOpen(true);
                     }}
                 >
                     <span className='material-icons'>sort</span>Filter tasks
                 </button>
-                {setIsFilter && (
+                {isModalOpen && (
                     <FilterModal
-                        title1='Completed Tasks'
-                        title2='Uncompleted Tasks'
-                        title3='All Tasks'
-                        setIsModal={setFilter}
-                        type={TASK_MODAL_TYPE.FILTER}
-                    />
-                )}
+                        title1='Sort by'
+                        title2='Progress'
+                        title3='Due date'
+                    
+                    /> 
+                )} 
+               
             </div>
-            <div>
-     
-         </div>
-
             <div>
                 <div style={styles.tableHead}>
                     <div style={styles.tableHeaderTaskName}>Task Name</div>
@@ -67,7 +58,7 @@ const TaskList = (): JSX.Element => {
                     <div style={styles.tableHeaderDueDate}>Due Date</div>
                     <div style={styles.tableHeaderProgress}>Progress</div>
                 </div>
-                {filter?.map((task: Task) => {
+                {task.map((task: Task) => {
                     return <TaskListItem key={task.id} task={task} />;
                 })}
             </div>

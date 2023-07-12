@@ -5,7 +5,7 @@ import { useMoveTask } from '../../feactures/hooks/MoveTask';
 import { incompleteTask } from '../../feactures/tasks/TaskSelector';
 import { useRecoilValue } from 'recoil';
 import { useState } from 'react';
-import TaskMenu from '../crud/TaskMenuEdit'; // Ditambahkan
+import TaskMenuEdit from '../crud/TaskMenuEdit'; // Ditambahkan
 interface TaskCardProps {
     task: Task;
 }
@@ -77,7 +77,7 @@ export const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
                 )}
             </div>
             {/* Ditambahkan */}
-            {isMenuOpen && <TaskMenu setIsMenuOpen={setIsMenuOpen} />}
+            {isMenuOpen && <TaskMenuEdit task={task} taskId={task.id} setIsMenuOpen={setIsMenuOpen} />}
         </div>
     );
 };

@@ -15,9 +15,12 @@ export const TASK_PROGRESS_ID = {
 export const TASK_MODAL_TYPE = {
     ADD: 'Add',
     EDIT: 'edit',
+    DELETE: 'delete',
+    FILTER: 'filter',
 };
 
 export const TASK_MODAL_ID = {
     ADD: 'add',
     EDIT: 'edit',
-}
+    DELETE: 'delete',
+};

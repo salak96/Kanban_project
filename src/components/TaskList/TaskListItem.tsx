@@ -36,7 +36,7 @@ const getIconStyle = (progressOrder: number): React.CSSProperties => {
     };
 };
 const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
-    const { completeTask } = useTasksAction();
+    const { completedTask } = useTasksAction();
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
     return (
         <div style={styles.tableBody}>
@@ -45,7 +45,7 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
                     className='material-icons'
                     style={getIconStyle(task.progressOrder)}
                     onClick={(): void => {
-                        completeTask(task.id); // Ditambahkan
+                        completedTask(task.id);
                         setIsMenuOpen(true); // Ditambahkan
                     }}
                 >
@@ -57,15 +57,16 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
             <div style={styles.tableBodyprogress}>{task.progressOrder}</div>
             <div style={styles.tableBodyprogress}>{getProgressCategory(task.progressOrder)}</div>
             <div>
-            <span  className="material-icons"
+                <span
+                    className='material-icons'
                     style={styles.menuIcon}
                     onClick={(): void => {
-                        setIsMenuOpen(true) // Ditambahkan
+                        setIsMenuOpen(true); // Ditambahkan
                     }}
-        >
-                   more_horiz
+                >
+                    more_horiz
                 </span>
-                {isMenuOpen && <TaskMenuEdit setIsMenuOpen={setIsMenuOpen} />}
+                {isMenuOpen && <TaskMenuEdit setIsMenuOpen={setIsMenuOpen} task={task} taskId={task.id} />}
             </div>
         </div>
     );
