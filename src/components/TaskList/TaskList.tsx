@@ -1,4 +1,3 @@
-import React from 'react';
 import { useRecoilValue } from 'recoil';
 import { tasksState } from '../../feactures/TaskAtoms';
 import type { Task, CSSProperties } from '../../types';

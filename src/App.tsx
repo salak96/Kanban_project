@@ -1,6 +1,4 @@
-import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import SideMenu from './components/SideMenu';
 import { RecoilRoot } from 'recoil'; // Ditambahkan
 import TaskSummary from './components/TaskSummarry';
 import SideMenuLayout from './components/layouts/SideMenuLayout';
