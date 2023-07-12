@@ -16,11 +16,11 @@ describe('TaskList Component', () => {
     test('Add Task Modal can be opend and closed', async () => {
         await user.click(screen.getByTestId('add-task-button'));
         await waitFor(() => {
-            expect(screen.getByTestId('task-modal')).toBe('/task-list');
+            expect(screen.getByTestId('task-modal')).toBe('/task-progress');
         });
         await user.click(screen.getByTestId('close-modal-button'));
         await waitFor(() => {
-            expect(screen.queryByTestId('task-modal')).toBe('/task-list');
+            expect(screen.queryByTestId('task-modal')).toBe('/task-progress');
         });
     });
 });
