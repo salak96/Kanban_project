@@ -22,7 +22,7 @@ const TaskList = (): JSX.Element => {
                         setIsModalOpen(true);
                     }}
                     data-testid='add-task-button' // Ditambahkan
-                    >
+                >
                     <span className='material-icons'>add</span>Add task
                 </button>
                 {isModalOpen && (

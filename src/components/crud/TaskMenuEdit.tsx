@@ -38,8 +38,8 @@ const TaskMenu = ({ setIsMenuOpen, taskId, task }: TaskMenuProps): JSX.Element =
     };
     return (
         <div
-            style={styles.menu}
-            data-testid='task-menu' // Ditambahkan
+            style={styles.menu} 
+            data-testid="task-menu" // Ditambahkan tes
         >
             <div style={styles.menuItem}>
                 <button
@@ -57,7 +57,7 @@ const TaskMenu = ({ setIsMenuOpen, taskId, task }: TaskMenuProps): JSX.Element =
                     onClick={() => {
                         deleteTask(taskId);
                     }}
-                    data-testid='delete-button' // Ditambahkan
+                    data-testid='delete-button' // Ditambahkan tes
                 >
                     <span className='material-icons'>delete</span>Delete
                 </button>

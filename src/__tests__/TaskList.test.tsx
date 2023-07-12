@@ -14,26 +14,25 @@ describe('TaskList Component', () => {
     });
     // Add Task
     test('Add Task Modal can be opend and closed', async () => {
-        await user.click(screen.getByTestId('add-task-button'))
+        await user.click(screen.getByTestId('add-task-button'));
         await waitFor(() => {
-          expect(screen.getByTestId('task-modal')).toBeInTheDocument()
-        })
-    
-        await user.click(screen.getByTestId('close-modal-button'))
+            expect(screen.getByTestId('task-modal')).toBeInTheDocument();
+        });
+
+        await user.click(screen.getByTestId('close-modal-button'));
         await waitFor(() => {
-          expect(screen.queryByTestId('task-modal')).not.toBeInTheDocument()
-        })
-      })
+            expect(screen.queryByTestId('task-modal')).not.toBeInTheDocument();
+        });
+    });
     //   filter
     test('Filter Task Modal can be opend and closed', async () => {
-        await user.click(screen.getByTestId('add-task-filter'))
+        await user.click(screen.getByTestId('add-task-filter'));
         await waitFor(() => {
-          expect(screen.getByTestId('task-filter')).toBeInTheDocument()
-        })
-        await user.click(screen.getByTestId('close-modal-button'))
+            expect(screen.getByTestId('task-filter')).toBeInTheDocument();
+        });
+        await user.click(screen.getByTestId('close-modal-button'));
         await waitFor(() => {
-          expect(screen.queryByTestId('task-filter')).not.toBeInTheDocument()
-        })
-
-    })
+            expect(screen.queryByTestId('task-filter')).not.toBeInTheDocument();
+        });
+    });
 });

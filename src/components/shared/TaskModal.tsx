@@ -12,8 +12,9 @@ interface TaskModalProps {
 
 const TaskModal = ({ headingTitle, type, setIsModalOpen, defaultProgressOrder, task }: TaskModalProps): JSX.Element => {
     return (
-        <div style={styles.container}
-        data-testid="task-modal" // Ditambahkan
+        <div
+            style={styles.container}
+            data-testid='task-modal' // Ditambahkan
         >
             <div style={styles.modalTop}>
                 <h1>{headingTitle}</h1>
@@ -23,7 +24,7 @@ const TaskModal = ({ headingTitle, type, setIsModalOpen, defaultProgressOrder, t
                     onClick={(): void => {
                         setIsModalOpen(false);
                     }}
-                    data-testid="close-modal-button" // Ditambahkan
+                    data-testid='close-modal-button' // Ditambahkan
                 >
                     close
                 </span>
