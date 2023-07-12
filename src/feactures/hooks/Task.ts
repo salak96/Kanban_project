@@ -25,6 +25,7 @@ export const useTasksAction = (): useTaskActionType => {
         setFilter(true);
         const updatedTasks = tasks.map((task) => (task.id === value.id ? value : task));
         setTasks(updatedTasks);
+        setIsFilter
     };
 
     const deleteTask = (taskId: number): void => {

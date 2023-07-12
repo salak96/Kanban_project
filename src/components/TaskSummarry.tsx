@@ -1,4 +1,3 @@
-;
 import { useRecoilValue } from 'recoil';
 import type { Task, CSSProperties } from '../types';
 import { completedTasksSelector, uncompletedTasksSelector } from '../feactures/tasks/TaskSelector';

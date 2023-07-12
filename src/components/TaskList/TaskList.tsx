@@ -1,5 +1,4 @@
 import { useRecoilValue } from 'recoil';
-import { tasksState } from '../../feactures/TaskAtoms';
 import type { Task, CSSProperties } from '../../types';
 import TaskListItem from './TaskListItem';
 import { useState } from 'react';
@@ -10,11 +9,9 @@ import { filterTask } from '../../feactures/tasks/TaskSelector';
 
 
 const TaskList = (): JSX.Element => {
-    const task: Task[] = useRecoilValue(tasksState);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [setIsFilter, setFilter] = useState<boolean>(false);
     const filter = useRecoilValue(filterTask);
-   
 
     return (
         <div style={styles.container}>

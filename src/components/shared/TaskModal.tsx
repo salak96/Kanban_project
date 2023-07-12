@@ -1,4 +1,3 @@
-;
 import type { Dispatch, SetStateAction } from 'react';
 import type { CSSProperties, Task } from '../../types';
 import TaskForm from './TaskForm';
