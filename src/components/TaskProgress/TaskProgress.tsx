@@ -1,4 +1,3 @@
-;
 import { useRecoilValue } from 'recoil';
 import { notStartedTasksSelector, inProgressTasksSelector, waitingTasksSelector, completedTasksSelector } from '../../feactures/tasks/TaskSelector';
 import TaskColumn from './TaskColumn';

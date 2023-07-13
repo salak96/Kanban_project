@@ -1,4 +1,3 @@
-;
 import type { Task, CSSProperties } from '../../types';
 import { TASK_PROGRESS_ID } from '../../constants/app';
 import { useMoveTask } from '../../feactures/hooks/MoveTask';

@@ -38,7 +38,10 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
     const { completedTask } = useTasksAction();
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
     return (
-        <div style={styles.tableBody}>
+        <div
+            style={styles.tableBody}
+            data-testid='task-list-item' // Ditambahkan tes
+        >
             <div style={styles.tableBodyTaskTitle}>
                 <span
                     className='material-icons'
@@ -48,7 +51,8 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
                         setIsMenuOpen(true); // Ditambahkan
                     }}
                 >
-                    check_circle
+                    {/* element cek list */}
+                    check_circles
                 </span>
             </div>
             <div style={styles.tableBodyDetail}>{task.detail}</div>
@@ -62,7 +66,9 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
                     onClick={(): void => {
                         setIsMenuOpen(true); // Ditambahkan
                     }}
+                    data-testid='task-menu-button' // Ditambahkan test
                 >
+                    {/*element titik "..."  */}
                     more_horiz
                 </span>
                 {isMenuOpen && <TaskMenuEdit setIsMenuOpen={setIsMenuOpen} task={task} taskId={task.id} />}

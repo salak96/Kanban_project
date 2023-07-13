@@ -1,4 +1,4 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { TASK_PROGRESS_ID, TASK_PROGRESS_STATUS } from '../../constants/app';
 import type { CSSProperties, Task } from '../../types';
 import type { Dispatch, SetStateAction } from 'react';
@@ -70,7 +70,7 @@ const TaskForm = ({ defaultProgressOrder, task, setFilter, onEditTask }: TaskFor
     return (
         <form style={styles.form}>
             <div style={styles.formItem}>
-                <label>Title：</label>
+                <label>Titles：</label>
                 <input
                     type='text'
                     value={title}
