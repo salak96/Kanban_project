@@ -38,8 +38,8 @@ const TaskMenu = ({ setIsMenuOpen, taskId, task }: TaskMenuProps): JSX.Element =
     };
     return (
         <div
-            style={styles.menu} 
-            data-testid="task-menu" // Ditambahkan tes
+            style={styles.menu}
+            data-testid='task-menu' // Ditambahkan tes
         >
             <div style={styles.menuItem}>
                 <button
@@ -47,6 +47,7 @@ const TaskMenu = ({ setIsMenuOpen, taskId, task }: TaskMenuProps): JSX.Element =
                     onClick={() => {
                         setIsModalOpen(true);
                     }}
+                    data-testid='edit-button' // Ditambahkan tes
                 >
                     <span className='material-icons'>edit</span>Edit
                 </button>
@@ -68,6 +69,7 @@ const TaskMenu = ({ setIsMenuOpen, taskId, task }: TaskMenuProps): JSX.Element =
                 onClick={() => {
                     setIsMenuOpen(false);
                 }}
+                data-testid='close-modal-button' // Ditambahkan
             >
                 close
             </span>

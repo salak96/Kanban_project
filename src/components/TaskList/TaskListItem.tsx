@@ -52,9 +52,8 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
                     }}
                 >
                     {/* element cek list */}
-                    check_circles 
+                    check_circles
                 </span>
-
             </div>
             <div style={styles.tableBodyDetail}>{task.detail}</div>
             <div style={styles.tableBodyDueDate}>{task.dueDate}</div>
@@ -69,7 +68,7 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
                     }}
                     data-testid='task-menu-button' // Ditambahkan test
                 >
-                    {/*element titik  */}
+                    {/*element titik "..."  */}
                     more_horiz
                 </span>
                 {isMenuOpen && <TaskMenuEdit setIsMenuOpen={setIsMenuOpen} task={task} taskId={task.id} />}

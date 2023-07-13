@@ -29,8 +29,11 @@ const TaskForm = ({ type, defaultProgressOrder, setIsModalOpen, task }: TaskForm
         }
     };
     return (
-        <form style={styles.form}>
-            <div style={styles.formItem}>
+        <form
+            style={styles.form}>
+            <div style={styles.formItem}
+            data-testid='input' 
+            >
                 <label>Title：</label>
                 <input
                     type='text'
@@ -41,7 +44,8 @@ const TaskForm = ({ type, defaultProgressOrder, setIsModalOpen, task }: TaskForm
                     style={styles.formInput}
                 />
             </div>
-            <div style={styles.formItem}>
+            <div style={styles.formItem} 
+            data-testid='detail'>
                 <label>Detail：</label>
                 <textarea
                     value={detail}
@@ -51,7 +55,7 @@ const TaskForm = ({ type, defaultProgressOrder, setIsModalOpen, task }: TaskForm
                     style={styles.formTextArea}
                 />
             </div>
-            <div style={styles.formItem}>
+            <div style={styles.formItem} data-testid='due'>
                 <label>Due Date：</label>
                 <input
                     type='date'
@@ -62,7 +66,7 @@ const TaskForm = ({ type, defaultProgressOrder, setIsModalOpen, task }: TaskForm
                     style={styles.formInput}
                 />
             </div>
-            <div style={styles.formItem}>
+            <div style={styles.formItem} data-testid='progress-select'>
                 <label>Progress：</label>
                 <select
                     style={styles.formInput}
@@ -83,6 +87,7 @@ const TaskForm = ({ type, defaultProgressOrder, setIsModalOpen, task }: TaskForm
                 onClick={(): void => {
                     handleSubmit(); // Ditambahkan
                 }}
+                data-testid='save-button'
             >
                 Submit
             </button>

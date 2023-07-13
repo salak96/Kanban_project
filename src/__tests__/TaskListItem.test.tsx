@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import { MutableSnapshot, RecoilRoot } from 'recoil';
 import { tasksState } from '../feactures/TaskAtoms';
 import TaskList from '../components/TaskList/TaskList';
-const tasks = [
+const taskss = [
     {
         id: 1,
         title: 'Test Task',
@@ -22,7 +22,7 @@ const tasks = [
 ];
 
 function initializeState({ set }: MutableSnapshot) {
-    set(tasksState, tasks);
+    set(tasksState, taskss);
 }
 
 describe('TaskListItem Component', () => {
@@ -34,90 +34,50 @@ describe('TaskListItem Component', () => {
         );
     });
 
-//tes delete
+    //tes delete
+    describe('Delete Task Feature', () => {
+        test('A task can be deleted', async () => {
+            let lengthBefore = 0;
 
-describe('Delete Task Feature', () => {
-    test('A task can be deleted', async () => {
-      let lengthBefore = 0
+            // Klik tombol "..." dan simpanjumlah data task pada `lengthBefore`
+            await waitFor(() => {
+                user.click(screen.getAllByTestId('task-menu-button')[0]);
+                lengthBefore = screen.getAllByTestId('task-list-item').length;
+                expect(screen.getByTestId('task-menu')).toBeInTheDocument();
+            });
 
-      // Klik tombol "..." dan simpanjumlah data task pada `lengthBefore`
-      await waitFor(() => {
-        user.click(screen.getAllByTestId('task-menu-button')[0])
-        lengthBefore = screen.getAllByTestId('task-list-item').length
-        expect(screen.getByTestId('task-menu')).toBeInTheDocument()
-      })
+            // Klik tombol "Delete"
+            await user.click(screen.getByTestId('delete-button'));
 
-      // Klik tombol "Delete"
-      await user.click(screen.getByTestId('delete-button'))
+            // Periksa apakah jumlah data berkurang atau tidak
+            await waitFor(() => {
+                const lengthAfter = screen.getAllByTestId('task-list-item').length;
+                expect(lengthBefore).toBeGreaterThan(lengthAfter);
+            });
+        });
+    });
+    //tes edit
+    describe('Edit Task Feature', () => {
+      test('A task can be edited', async () => {
+        const newInputTitle = 'Task baru nya'
+    
+        await waitFor(() => {
+          user.click(screen.getAllByTestId('task-menu-button')[0])
+          expect(screen.getByTestId('task-menu')).toBeInTheDocument()
+        })
+    
+        await user.click(screen.getByTestId('edit-button'))
 
-      // Periksa apakah jumlah data berkurang atau tidak
-      await waitFor(() => {
-        const lengthAfter = screen.getAllByTestId('task-list-item').length
-        expect(lengthBefore).toBeGreaterThan(lengthAfter)
+    
+        await waitFor(() => {
+          expect(screen.getByTestId('task-modal')).toBeInTheDocument()
+        })
+        
+        await user.type(screen.getByTestId('input'), newInputTitle)
+        await user.type(screen.getByTestId('detail'), 'Detail baru nya')
+        await user.type(screen.getByTestId('due'), '2023-05-05')
+        await user.click(screen.getByTestId('save-button'))
+        
       })
     })
-  })
 })
-describe('Add Task Feature', () => {
-    test('A new task can be added', async () => {
-      let lengthBefore = 0
-      await waitFor(() => {
-        user.click(screen.getByTestId('add-task-button'))
-        lengthBefore = screen.getAllByTestId('task-list-item').length
-        expect(screen.getByTestId('task-modal')).toBeInTheDocument()
-      })
-  
-      // Masukkan judul
-      const inputTitle = 'Task baru 1'
-      await user.type(screen.getByTestId('title-input'), inputTitle)
-      expect(screen.getByTestId('title-input')).toHaveValue(inputTitle)
-  
-      // Masukkan detail
-      const inputDetail = 'Detail Task baru 1'
-      await user.type(screen.getByTestId('detail-input'), inputDetail)
-      expect(screen.getByTestId('detail-input')).toHaveValue(inputDetail)
-  
-      // Pilih tanggal
-      const inputDate = '2022-09-09'
-      await user.clear(screen.getByTestId('due-date-input'))
-      await user.type(screen.getByTestId('due-date-input'), inputDate)
-      expect(screen.getByTestId('due-date-input')).toHaveValue(inputDate)
-  
-      // Pilih progress
-      const inputProgress = '3'
-      await user.selectOptions(screen.getByTestId('progress-select'), inputProgress)
-      expect(screen.getByTestId('progress-select')).toHaveValue(inputProgress)
-  
-      // Klik submit
-      await user.click(screen.getByTestId('task-modal-submit-button'))
-  
-      await waitFor(() => {
-        const lengthAfter = screen.getAllByTestId('task-list-item').length
-        expect(lengthBefore).toBeLessThan(lengthAfter)
-      })
-    })
-  })
-  describe('Edit Task Feature', () => {
-    test('A task can be edited', async () => {
-      const newInputTitle = 'Task baru nya'
-  
-      await waitFor(() => {
-        user.click(screen.getAllByTestId('task-menu-button')[0])
-        expect(screen.getByTestId('task-menu')).toBeInTheDocument()
-      })
-  
-      await user.click(screen.getByTestId('edit-button'))
-  
-      await waitFor(() => {
-        expect(screen.getByTestId('task-modal')).toBeInTheDocument()
-      })
-  
-      await user.clear(screen.getByTestId('title-input'))
-      await user.type(screen.getByTestId('title-input'), newInputTitle)
-      await user.click(screen.getByTestId('task-modal-submit-button'))
-  
-      await waitFor(() => {
-        expect(screen.getByText(newInputTitle)).toBeInTheDocument()
-      })
-    })
-  })

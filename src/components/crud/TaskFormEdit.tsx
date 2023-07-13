@@ -70,7 +70,7 @@ const TaskForm = ({ defaultProgressOrder, task, setFilter, onEditTask }: TaskFor
     return (
         <form style={styles.form}>
             <div style={styles.formItem}>
-                <label>Title：</label>
+                <label>Titles：</label>
                 <input
                     type='text'
                     value={title}
