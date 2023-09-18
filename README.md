@@ -2,23 +2,30 @@
 
 -   Jalankan command berikut ini untuk membuat proyek React + TypeScript yang baru:
 
-```
+```bash
 npm create vite@latest kanban-project -- --template react-ts
+```
+- install node.Js
+
+```bash
 cd kanban-project
 npm install
 ```
 
 -   Pasang dan inisialisasi ESLint (ikuti pengaturan yang sama dengan materi di atas):
 
-```
+```bash
 npm install --save-dev eslint
+```
+- install npm eslint
+```bash
 npm init @eslint/config
 
 ```
 
 -   Tambahkan "project": "./tsconfig.json" ke "parserOptions" dalam .eslintrc.json:
 
-```
+```bash
 "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module",
@@ -29,20 +36,20 @@ npm init @eslint/config
 
 -   Pasang Prettier dan buatlah file konfigurasi:
 
-```
+```bash
 npm install --save-dev --save-exact prettier
 
 ```
 
 -   Buat File
 
-```
-echo {}> .prettierrc.json
+```bash
+touch .prettierrc.json
 ```
 
 -   Kali ini, kita akan menambahkan aturan ini ke Prettier (.prettierrc.json).
 
-```
+```bash
 {
   "printWidth": 100,
   "semi": false,
@@ -53,13 +60,13 @@ echo {}> .prettierrc.json
 
 -   Pasang eslint-config-prettier sehingga ESLint dan Prettier tidak saling bentrok.
 
-```
+```bash
 npm install --save-dev eslint-config-prettier
 ```
 
 -   Tambahkan baris di bawah ini ke .eslintrc.json:
 
-```
+```bash
 "extends": [
     ...
     "prettier" // Ditambahkan
@@ -68,13 +75,13 @@ npm install --save-dev eslint-config-prettier
 
 -   Pertama, kita akan memperbarui code awal agar sesuai dengan aturan Prettier menggunakan command berikut:
 
-```
+```bash
 npx prettier --write src
 ```
 
 -   Selanjutnya, jalankan command berikut ini untuk menjalankan ESLint:
 
-```
+```bash
 npx eslint src
 ```
 
@@ -84,39 +91,39 @@ Jika error ESLint ditemukan pada file awal di mana kita tidak melakukan perubaha
 
 -   Buatlah file .eslintignore dan tambahkan baris seperti ini (file dan folder dapat berbeda-beda):
 
-```
+```bash
 vite-env.d.ts
 ```
 
 -   Jika command di atas telah berjalan dengan baik, maka semuanya sudah siap. Jalankan server dengan command berikut dan periksa apakah layar awal tertampilkan atau tidak.
 
-```
+```bash
 npm run dev
 ```
 
 # Tambahkan code dibawah ini di package.json
 
-```
+```bash
 "format":"npx prettier --write src",
  "linter":"npx eslint src",
 ```
 
 -   Untuk Menjalankan code diatas diterminal
 
-```
+```bash
 npm run format
 npm run linter
 ```
 
 # Setelah siap melanjutkan proses development, mari kita pasang react-router dengan command berikut ini :
 
-```
+```bash
 npm install react-router-dom
 ```
 
 # Setelah terpasang, perbarui App.tsx dan atur BrowserRouter seperti ini:
 
-```
+```bash
 
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 
